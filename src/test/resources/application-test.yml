@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:turnstile;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  flyway:
+    enabled: true
+turnstile:
+  scoring:
+    new-device-points: 40
+    new-country-points: 25
+    impossible-travel-points: 50
+    failed-burst-points: 30
+    allow-max-exclusive: 40
+    step-up-max-exclusive: 70
+    failed-burst-count: 5
+    failed-window-minutes: 15
+    country-lookback-days: 30
+    impossible-travel-speed-kmh: 900
+    earth-radius-km: 6371.0088

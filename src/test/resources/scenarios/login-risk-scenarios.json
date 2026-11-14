@@ -1,0 +1,283 @@
+[
+  {
+    "name": "No signals",
+    "signals": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "expectedScore": 0,
+    "expectedDecision": "ALLOW",
+    "expectedReasons": []
+  },
+  {
+    "name": "New device only",
+    "signals": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "expectedScore": 40,
+    "expectedDecision": "STEP_UP",
+    "expectedReasons": [
+      "NEW_DEVICE"
+    ]
+  },
+  {
+    "name": "New country only",
+    "signals": [
+      false,
+      true,
+      false,
+      false
+    ],
+    "expectedScore": 25,
+    "expectedDecision": "ALLOW",
+    "expectedReasons": [
+      "NEW_COUNTRY"
+    ]
+  },
+  {
+    "name": "Impossible travel only",
+    "signals": [
+      false,
+      false,
+      true,
+      false
+    ],
+    "expectedScore": 50,
+    "expectedDecision": "STEP_UP",
+    "expectedReasons": [
+      "IMPOSSIBLE_TRAVEL"
+    ]
+  },
+  {
+    "name": "Failed burst only",
+    "signals": [
+      false,
+      false,
+      false,
+      true
+    ],
+    "expectedScore": 30,
+    "expectedDecision": "ALLOW",
+    "expectedReasons": [
+      "FAILED_BURST"
+    ]
+  },
+  {
+    "name": "New device plus country",
+    "signals": [
+      true,
+      true,
+      false,
+      false
+    ],
+    "expectedScore": 65,
+    "expectedDecision": "STEP_UP",
+    "expectedReasons": [
+      "NEW_DEVICE",
+      "NEW_COUNTRY"
+    ]
+  },
+  {
+    "name": "New device plus travel",
+    "signals": [
+      true,
+      false,
+      true,
+      false
+    ],
+    "expectedScore": 90,
+    "expectedDecision": "DENY",
+    "expectedReasons": [
+      "NEW_DEVICE",
+      "IMPOSSIBLE_TRAVEL"
+    ]
+  },
+  {
+    "name": "New device plus burst",
+    "signals": [
+      true,
+      false,
+      false,
+      true
+    ],
+    "expectedScore": 70,
+    "expectedDecision": "DENY",
+    "expectedReasons": [
+      "NEW_DEVICE",
+      "FAILED_BURST"
+    ]
+  },
+  {
+    "name": "New country plus travel",
+    "signals": [
+      false,
+      true,
+      true,
+      false
+    ],
+    "expectedScore": 75,
+    "expectedDecision": "DENY",
+    "expectedReasons": [
+      "NEW_COUNTRY",
+      "IMPOSSIBLE_TRAVEL"
+    ]
+  },
+  {
+    "name": "New country plus burst",
+    "signals": [
+      false,
+      true,
+      false,
+      true
+    ],
+    "expectedScore": 55,
+    "expectedDecision": "STEP_UP",
+    "expectedReasons": [
+      "NEW_COUNTRY",
+      "FAILED_BURST"
+    ]
+  },
+  {
+    "name": "Travel plus burst",
+    "signals": [
+      false,
+      false,
+      true,
+      true
+    ],
+    "expectedScore": 80,
+    "expectedDecision": "DENY",
+    "expectedReasons": [
+      "IMPOSSIBLE_TRAVEL",
+      "FAILED_BURST"
+    ]
+  },
+  {
+    "name": "All signals",
+    "signals": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "expectedScore": 145,
+    "expectedDecision": "DENY",
+    "expectedReasons": [
+      "NEW_DEVICE",
+      "NEW_COUNTRY",
+      "IMPOSSIBLE_TRAVEL",
+      "FAILED_BURST"
+    ]
+  },
+  {
+    "name": "Four signals disabled",
+    "signals": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "expectedScore": 0,
+    "expectedDecision": "ALLOW",
+    "expectedReasons": []
+  },
+  {
+    "name": "Score below 40",
+    "signals": [
+      false,
+      true,
+      false,
+      false
+    ],
+    "expectedScore": 25,
+    "expectedDecision": "ALLOW",
+    "expectedReasons": [
+      "NEW_COUNTRY"
+    ]
+  },
+  {
+    "name": "Score exactly 40",
+    "signals": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "expectedScore": 40,
+    "expectedDecision": "STEP_UP",
+    "expectedReasons": [
+      "NEW_DEVICE"
+    ]
+  },
+  {
+    "name": "Score exactly 70",
+    "signals": [
+      true,
+      false,
+      false,
+      true
+    ],
+    "expectedScore": 70,
+    "expectedDecision": "DENY",
+    "expectedReasons": [
+      "NEW_DEVICE",
+      "FAILED_BURST"
+    ]
+  },
+  {
+    "name": "Failed credential immediate deny",
+    "credentialValid": false,
+    "expectedScore": 0,
+    "expectedDecision": "DENY",
+    "expectedReasons": [
+      "BAD_CREDENTIALS"
+    ]
+  },
+  {
+    "name": "First login skips travel",
+    "signals": [
+      true,
+      true,
+      false,
+      false
+    ],
+    "expectedScore": 65,
+    "expectedDecision": "STEP_UP",
+    "expectedReasons": [
+      "NEW_DEVICE",
+      "NEW_COUNTRY"
+    ]
+  },
+  {
+    "name": "Known device and country",
+    "signals": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "expectedScore": 0,
+    "expectedDecision": "ALLOW",
+    "expectedReasons": []
+  },
+  {
+    "name": "Threshold configurable",
+    "signals": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "overrideAllowMaxExclusive": 45,
+    "expectedScore": 40,
+    "expectedDecision": "ALLOW",
+    "expectedReasons": [
+      "NEW_DEVICE"
+    ]
+  }
+]

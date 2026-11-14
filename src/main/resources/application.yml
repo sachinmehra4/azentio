@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: project-turnstile
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/turnstile}
+    username: ${DB_USERNAME:turnstile}
+    password: ${DB_PASSWORD:turnstile}
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+server:
+  port: 8080
+turnstile:
+  scoring:
+    new-device-points: 40
+    new-country-points: 25
+    impossible-travel-points: 50
+    failed-burst-points: 30
+    allow-max-exclusive: 40
+    step-up-max-exclusive: 70
+    failed-burst-count: 5
+    failed-window-minutes: 15
+    country-lookback-days: 30
+    impossible-travel-speed-kmh: 900
+    earth-radius-km: 6371.0088
